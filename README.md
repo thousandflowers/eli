@@ -1,42 +1,50 @@
 # Eli 🐕
 
-> Claude Code parla come un ingegnere. Eli traduce per il resto del mondo.
+> Claude Code talks like an engineer. Eli translates for the rest of the world.
 
 ---
 
-## Cos'è Eli
+## Why I built this
 
-**Versione tecnica**
-Eli è un plugin per Claude Code che sovrascrive il layer di output dell'agente con un sistema di comunicazione adattivo. Legge un profilo utente persistente (`~/.claude/eli-profile.md`), calibra il livello di astrazione per ogni concetto, e aggiorna il profilo in base al feedback implicito ed esplicito dell'utente nel tempo.
+My girlfriend and I both use Claude Code, but we have very different technical backgrounds. Claude Code's default output is great if you already know what a build pipeline or a diff is — less great if you don't.
 
-**Versione Eli/dog 🐕**
-Claude Code è bravo a scrivere codice ma spiega le cose come se tu avessi studiato informatica per cinque anni. Eli è un traduttore: ascolta quello che fa Claude Code e te lo dice in italiano normale. E più lo usi, più impara come spiegarti le cose — perché non tutti capiscono meglio con una metafora, e non tutti capiscono peggio con un termine tecnico.
-
-**Versione Eli/5 🧒**
-Immagina che Claude Code sia un meccanico bravissimo ma che parla solo in giapponese. Eli è l'interprete che ti dice "ha sistemato i freni, puoi guidare" invece di spiegarti come funziona il sistema frenante.
+I wanted something that would adapt to who's sitting at the keyboard, not assume everyone speaks the same language. Eli is that: a translation layer that learns how you think, not just what you know.
 
 ---
 
-## Installazione
+## What is Eli
 
-**Versione tecnica**
-Eli è distribuito tramite il marketplace `thousandflowers` per Claude Code. Richiede Claude Code con supporto plugin (versione ≥ 1.0.0). Il plugin installa: una skill principale, un memory agent, sette comandi slash, e un session-end hook.
+**Technical version**
+Eli is a Claude Code plugin that overrides the agent's output layer with an adaptive communication system. It reads a persistent user profile (`~/.claude/eli-profile.md`), calibrates the abstraction level for each concept, and updates the profile based on implicit and explicit user feedback over time.
+
+**Eli/dog version 🐕**
+Claude Code is great at writing code but explains things like you've studied computer science for five years. Eli is a translator: it listens to what Claude Code does and tells you in plain language. And the more you use it, the more it learns how to explain things to *you* — because not everyone understands better with a metaphor, and not everyone understands worse with a technical term.
+
+**Eli/5 version 🧒**
+Imagine Claude Code is a really skilled mechanic who only speaks Japanese. Eli is the interpreter who tells you "they fixed the brakes, you can drive" instead of explaining how the braking system works.
+
+---
+
+## Install
+
+**Technical version**
+Eli is distributed via the `thousandflowers` marketplace for Claude Code. Requires Claude Code with plugin support (version ≥ 1.0.0). The plugin installs: a main skill, a memory agent, seven slash commands, and a session-end hook.
 
 ```bash
 /plugin marketplace add thousandflowers
 /plugin install eli
 ```
 
-**Versione Eli/dog 🐕**
-Apri Claude Code e incolla questi due comandi, uno alla volta. Il primo dice a Claude Code dove trovare Eli. Il secondo lo installa. Fine.
+**Eli/dog version 🐕**
+Open Claude Code and paste these two commands, one at a time. The first tells Claude Code where to find Eli. The second installs it. Done.
 
 ```
 /plugin marketplace add thousandflowers
 /plugin install eli
 ```
 
-**Versione Eli/5 🧒**
-Scrivi queste due cose nel programma, premi invio dopo ognuna:
+**Eli/5 version 🧒**
+Type these two things into the program, press enter after each:
 
 ```
 /plugin marketplace add thousandflowers
@@ -45,106 +53,106 @@ Scrivi queste due cose nel programma, premi invio dopo ognuna:
 /plugin install eli
 ```
 
-Fatto. Eli è installato.
+Done. Eli is installed.
 
 ---
 
-## Come funziona la prima volta
+## First run
 
-**Versione tecnica**
-Al primo avvio, Eli scansiona la cronologia delle sessioni Claude Code in `~/.claude/` per inferire il livello tecnico baseline dell'utente. Nessun input richiesto. Il livello inferito viene scritto nel profilo e usato silenziosamente da quel momento in poi. L'utente può sovrascriverlo in qualsiasi momento con `/eli level`.
+**Technical version**
+On first launch, Eli scans the Claude Code session history in `~/.claude/` to infer the user's baseline technical level. No input required. The inferred level is written to the profile and used silently from that point on. The user can override it at any time with `/eli level`.
 
-**Versione Eli/dog 🐕**
-La prima volta che apri Claude Code con Eli installato, Eli guarda le conversazioni che hai avuto in passato e capisce più o meno come parli di tecnologia. Non ti chiede niente — parte e basta, al livello giusto per te. Se sbaglia, puoi correggerlo.
+**Eli/dog version 🐕**
+The first time you open Claude Code with Eli installed, Eli looks at the conversations you've had in the past and figures out roughly how you talk about technology. It doesn't ask you anything — it just starts, at the right level for you. If it gets it wrong, you can correct it.
 
-**Versione Eli/5 🧒**
-La prima volta Eli legge i tuoi vecchi messaggi per capire quanto sai. Come quando un nuovo insegnante legge i tuoi compiti prima di iniziare a spiegarti le cose.
-
----
-
-## Come impara nel tempo
-
-**Versione tecnica**
-Eli mantiene una concept map persistente in `~/.claude/eli-profile.md`. Per ogni concetto tecnico, traccia: livello di astrazione usato, metodo di spiegazione (metafora, ASCII, causa-effetto, diretto), stato (unknown / learning / understood), e storico dei tentativi falliti. Il profilo viene aggiornato sia da segnali espliciti (comandi slash) che da segnali impliciti nel linguaggio naturale dell'utente.
-
-**Versione Eli/dog 🐕**
-Ogni volta che capisci qualcosa al volo, Eli lo annota: "questa persona sa già cos'è una build, non serve rispiegarlo". Ogni volta che non capisci, annota anche quello: "la metafora del magazzino non ha funzionato per i database, proviamo con un disegno". Nel tempo diventa sempre più preciso — non sul codice, su come parli tu.
-
-**Versione Eli/5 🧒**
-Eli tiene un taccuino. Ogni volta che capisci subito, scrive "questa cosa la sa". Ogni volta che chiedi di rispiegare, scrive "questa cosa va spiegata in modo diverso". La prossima volta che se ne parla, guarda il taccuino prima di aprire bocca.
+**Eli/5 version 🧒**
+The first time, Eli reads your old messages to understand how much you know. Like when a new teacher reads your homework before they start explaining things.
 
 ---
 
-## Cosa puoi dirgli
+## How it learns
 
-**Versione tecnica**
-Eli intercetta segnali linguistici naturali e li converte in aggiornamenti del profilo senza richiedere comandi espliciti. Supporta anche comandi slash per controllo granulare.
+**Technical version**
+Eli maintains a persistent concept map in `~/.claude/eli-profile.md`. For each technical concept, it tracks: abstraction level used, explanation method (metaphor, ASCII, cause-effect, direct), state (unknown / learning / understood), and history of failed attempts. The profile is updated by both explicit signals (slash commands) and implicit signals in the user's natural language.
 
-**Versione Eli/dog 🐕**
-Puoi parlare con Eli come parleresti con una persona. Se qualcosa è chiaro, dì "ok" o "capito" — lo segna. Se non è chiaro, dì "non ho capito" o anche solo "?" — riprova in modo diverso. Se sai già una cosa, dì "questo lo so già" — non te la rispiegherà più.
+**Eli/dog version 🐕**
+Every time you understand something immediately, Eli notes it: "this person already knows what a build is, no need to re-explain." Every time you don't understand, it notes that too: "the warehouse metaphor didn't work for databases, let's try a drawing." Over time it gets more precise — not about the code, about how *you* talk.
 
-Hai anche dei comandi se preferisci essere preciso:
+**Eli/5 version 🧒**
+Eli keeps a notebook. Every time you understand right away, it writes "this one they know." Every time you ask it to re-explain, it writes "this one needs explaining differently." Next time the topic comes up, it checks the notebook before saying anything.
 
-| Comando | Cosa fa |
+---
+
+## What you can say
+
+**Technical version**
+Eli intercepts natural language signals and converts them into profile updates without requiring explicit commands. Also supports slash commands for granular control.
+
+**Eli/dog version 🐕**
+You can talk to Eli like you'd talk to a person. If something is clear, say "ok" or "got it" — it notes it. If it's not clear, say "I didn't get that" or even just "?" — it'll try differently. If you already know something, say "I already know this" — it won't explain it again.
+
+You also have commands if you prefer to be precise:
+
+| Command | What it does |
 |---|---|
-| `/eli status` | Ti mostra cosa ha imparato su di te |
-| `/eli level dog` | Cambia il livello generale (5 / dog / donkey / human) |
-| `/eli forget jwt` | Dimentica tutto su un argomento specifico |
-| `/eli upgrade css` | Segna che conosci già un argomento |
-| `/eli reset` | Ricomincia da zero |
-| `/eli off` | Spegni Eli temporaneamente |
-| `/eli on` | Riaccendi Eli |
+| `/eli status` | Shows what it has learned about you |
+| `/eli level dog` | Changes the global level (5 / dog / donkey / human) |
+| `/eli forget jwt` | Forgets everything about a specific topic |
+| `/eli upgrade css` | Marks a topic as already known |
+| `/eli reset` | Start from scratch |
+| `/eli off` | Temporarily disable Eli |
+| `/eli on` | Re-enable Eli |
 
-**Versione Eli/5 🧒**
-Puoi dirgli:
-- "non ho capito" → te lo spiega diversamente
-- "lo so già" → non te lo spiega più
-- "ok" → annota che hai capito
+**Eli/5 version 🧒**
+You can tell it:
+- "I didn't get that" → it explains differently
+- "I already know this" → it won't explain it again
+- "ok" → it notes that you understood
 
-Oppure puoi usare i comandi qui sopra se vuoi essere più preciso.
+Or use the commands above if you want to be more precise.
 
 ---
 
-## I 4 livelli
+## The 4 levels
 
-**Versione tecnica**
-Eli supporta quattro livelli di astrazione configurabili globalmente o per singolo concetto. Il livello globale è il punto di partenza; i livelli per-concetto vengono appresi automaticamente e sovrascrivono il globale per quel concetto specifico.
+**Technical version**
+Eli supports four abstraction levels configurable globally or per concept. The global level is the starting point; per-concept levels are learned automatically and override the global for that specific concept.
 
-**Versione Eli/dog 🐕**
+**Eli/dog version 🐕**
 
-| Livello | Come spiega |
+| Level | How it explains |
 |---|---|
-| `/eli level 5` | Come a un bambino di 5 anni. Solo oggetti fisici, niente astratto. |
-| `/eli level dog` | Esempi di vita quotidiana. Zero gergo. Una metafora alla volta. |
-| `/eli level donkey` | Spiegazioni semplici. Un termine tecnico alla volta, spiegato subito. |
-| `/eli level human` | Linguaggio normale. Termini tecnici ok se spiegati la prima volta. |
+| `/eli level 5` | Like a 5-year-old. Only physical objects, nothing abstract. |
+| `/eli level dog` | Everyday life examples. Zero jargon. One metaphor at a time. |
+| `/eli level donkey` | Simple explanations. One technical term at a time, explained immediately. |
+| `/eli level human` | Normal language. Technical terms ok if explained the first time. |
 
-Eli parte dal livello che ha dedotto su di te. Puoi cambiarlo quando vuoi.
+Eli starts from the level it inferred about you. You can change it whenever you want.
 
-**Versione Eli/5 🧒**
-Eli può spiegarti le cose in modi diversi. Dal più semplice al meno semplice:
-- **5** — come a un bambino piccolo
-- **dog** — come a qualcuno che non lavora con i computer
-- **donkey** — qualche parola tecnica, spiegata subito
-- **human** — parole normali, termini tecnici ok
-
----
-
-## I tuoi dati
-
-**Versione tecnica**
-Tutto il profilo è salvato localmente in `~/.claude/eli-profile.md`. Nessun dato viene inviato a server esterni. Il file è leggibile e modificabile manualmente. `/eli status` ne mostra una versione human-readable. `/eli reset` lo azzera previa conferma, con backup automatico in `eli-profile.backup.md`.
-
-**Versione Eli/dog 🐕**
-Tutto quello che Eli impara su di te è salvato sul tuo computer, in un file di testo normale. Non va da nessuna parte. Puoi vederlo con `/eli status`, modificarlo con i comandi, o cancellarlo con `/eli reset`. È tuo.
-
-**Versione Eli/5 🧒**
-Il taccuino di Eli è sul tuo computer. Solo tu ce l'hai. Puoi leggerlo, cambiarlo, o buttarlo via quando vuoi.
+**Eli/5 version 🧒**
+Eli can explain things in different ways. From simplest to least simple:
+- **5** — like a small child
+- **dog** — like someone who doesn't work with computers
+- **donkey** — some technical words, explained right away
+- **human** — normal words, technical terms ok
 
 ---
 
-## Crediti
+## Your data
 
-Eli è un plugin open source distribuito da [thousandflowers](https://github.com/thousandflowers).
-Ispirato al plugin `caveman` — ma nella direzione opposta.
-Licenza MIT.
+**Technical version**
+The entire profile is saved locally in `~/.claude/eli-profile.md`. No data is sent to external servers. The file is readable and manually editable. `/eli status` shows a human-readable version. `/eli reset` clears it after confirmation, with automatic backup to `eli-profile.backup.md`.
+
+**Eli/dog version 🐕**
+Everything Eli learns about you is saved on your computer, in a plain text file. It goes nowhere. You can see it with `/eli status`, change it with commands, or delete it with `/eli reset`. It's yours.
+
+**Eli/5 version 🧒**
+Eli's notebook is on your computer. Only you have it. You can read it, change it, or throw it away whenever you want.
+
+---
+
+## Credits
+
+Eli is an open source plugin distributed by [thousandflowers](https://github.com/thousandflowers).
+Inspired by the `caveman` plugin — but in the opposite direction.
+MIT License.
