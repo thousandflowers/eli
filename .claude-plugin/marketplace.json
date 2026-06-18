@@ -1,0 +1,23 @@
+{
+  "name": "thousandflowers",
+  "owner": {
+    "name": "thousandflowers",
+    "url": "https://github.com/thousandflowers"
+  },
+  "plugins": [
+    {
+      "name": "eli",
+      "source": "./",
+      "description": "Adaptive human-mode for Claude Code. Translates technical output into plain language, learns how you understand things, and gets more accurate over time.",
+      "version": "0.1.0",
+      "category": "communication",
+      "keywords": [
+        "human-mode",
+        "accessibility",
+        "translation",
+        "adaptive",
+        "non-technical"
+      ]
+    }
+  ]
+}

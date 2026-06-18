@@ -1,0 +1,19 @@
+{
+  "name": "eli",
+  "version": "0.1.0",
+  "description": "Adaptive human-mode for Claude Code. Translates technical output into plain language, learns how you understand things, and gets more accurate over time.",
+  "author": {
+    "name": "thousandflowers",
+    "url": "https://github.com/thousandflowers"
+  },
+  "homepage": "https://github.com/thousandflowers/eli",
+  "license": "MIT",
+  "keywords": [
+    "human-mode",
+    "accessibility",
+    "translation",
+    "adaptive",
+    "non-technical",
+    "communication"
+  ]
+}
