@@ -8,8 +8,8 @@
     {
       "name": "eli",
       "source": "./",
-      "description": "Adaptive human-mode for Claude Code. Translates technical output into plain language, learns how you understand things, and gets more accurate over time.",
-      "version": "0.1.0",
+      "description": "Adaptive human-mode for Claude Code. Translates technical output into plain language, in your own language, learns how you understand things, and gets more accurate over time.",
+      "version": "0.2.0",
       "category": "communication",
       "keywords": [
         "human-mode",
