@@ -1,5 +1,7 @@
 # Eli 🐕
 
+> ⚠️ Alpha — in active development. Not ready for daily use yet.
+
 **Adaptive human-mode for Claude Code.** Eli translates technical output into
 plain language calibrated to *you* — and learns how you understand things over
 time, in your own language.
