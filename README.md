@@ -1,9 +1,9 @@
 # Eli 🐕
 
-> ⚠️ Alpha — in active development. Not ready for daily use yet.
+> ⚠️ Alpha - in active development. Not ready for daily use yet.
 
 **Adaptive human-mode for Claude Code.** Eli translates technical output into
-plain language calibrated to *you* — and learns how you understand things over
+plain language calibrated to *you* - and learns how you understand things over
 time, in your own language.
 
 Inspired by the caveman plugin, but pointing the other way: caveman makes Claude
@@ -18,7 +18,7 @@ terse; Eli makes Claude *understandable* to someone who doesn't code.
 - **Translates, doesn't dumb down.** The code stays professional; only the
   communication *to you* becomes human.
 - **Learns you.** Remembers which concepts you already get and which need a
-  metaphor — and stops re-explaining what you know.
+  metaphor - and stops re-explaining what you know.
 - **Four levels**, from "explain like I'm 5" up to plain-language technical.
 - **Your language.** Replies in whatever language you write in.
 - **Local & private.** Everything lives in one file on your machine
@@ -37,7 +37,7 @@ Restart Claude Code. Eli says hello once, then gets out of the way.
 
 | Level | For |
 |---|---|
-| `5` 🧒 | explain like I'm five — only everyday physical things |
+| `5` 🧒 | explain like I'm five - only everyday physical things |
 | `dog` 🐕 | everyday situations, one metaphor, no jargon (default) |
 | `donkey` 🫏 | simple cause-and-effect, one explained term allowed |
 | `human` 🧑 | plain language, technical terms explained on first use |
@@ -54,17 +54,17 @@ Restart Claude Code. Eli says hello once, then gets out of the way.
 | `/eli reset` | erase everything Eli learned (asks first; backs up) |
 | `/eli on` / `/eli off` | turn Eli on or off (memory is kept) |
 
-You don't need commands for the basics — just talk. Say "non ho capito" and Eli
+You don't need commands for the basics - just talk. Say "non ho capito" and Eli
 explains differently; say "lo so già" and it stops explaining that thing.
 
 ## How it learns
 
-1. **First run** — Eli estimates a starting level from a small, bounded sample of
+1. **First run** - Eli estimates a starting level from a small, bounded sample of
    your recent local Claude Code sessions (newest few transcripts only; it counts
    technical signals, keeps no content, and stores only a level). Nothing to go
    on → it starts at `dog`.
 2. **As you react** ("got it", "?", "explain that differently"), Eli updates a
-   tiny profile *immediately* — `~/.claude/eli-profile.md` — recording which
+   tiny profile *immediately* - `~/.claude/eli-profile.md` - recording which
    concepts you understand and which metaphors landed.
 3. **Each session** starts by loading that profile, so it picks up where it left
    off.
